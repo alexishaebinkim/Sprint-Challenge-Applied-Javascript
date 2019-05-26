@@ -17,8 +17,15 @@ class TabLink {
       this.cards = document.querySelector(`.card[data-tab="${this.data}"]`);
     }
 
-    // Map over the newly converted NodeList we just created in our if statement above. Convert each this.cards element into a new instance of the TabCard class. Pass in a card object to the TabCard class. 
-    this.cards = Array.from(this.cards).map(x=>new TabCard(x));
+    // Map over the newly converted NodeList we just created in our if statement above. Convert each this.cards element into a new instance of the TabCard class. 
+    //Pass in a card object to the TabCard class. 
+    
+    Array.from(this.cards).map(card => {
+      console.log(card);
+      return new TabCard(card);
+
+    });
+    
 
     // Add a click event that invokes this.selectTab
     this.tabElement.addEventListener('click', () => {
@@ -73,4 +80,6 @@ class TabCard {
 - In your .forEach() method's callback function, return a new instance of TabLink and pass in each tab as a parameter
 
 */
-let tabs = document.querySelectorAll('.tab').forEach(tab => new TabLink(tab));
+let tabs = document.querySelectorAll('.tab')
+
+tabs.forEach(tab => new TabLink(tab));
